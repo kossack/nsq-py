@@ -53,6 +53,8 @@ class BaseClient(object):
         if isinstance(host, basestring):
             # Strip off the scheme if any was provideds
             _, __, hostname = host.partition('//')
+            if not hostname:
+                hostname = host
             self._host, _, self._port = hostname.partition(':')
         elif isinstance(host, (tuple, list)):
             self._host, self._port = host
